@@ -1,6 +1,7 @@
 from sys import exit
 
 import pygame
+from pygame import Rect
 
 
 class Scene:
@@ -15,16 +16,25 @@ class Scene:
 
 
 class GameScene(Scene):
-    pass
+    def __init__(self, size):
+        self.score = 0
+        self.lifes = 4
+        bg_size = (size[0] * 3, int(1000 / 1080 * size[1]))
+        self.bg = pygame.transform.scale(
+            pygame.image.load('bg.png').convert(),
+            bg_size)
+        self.screen = pygame.display.set_mode(size, 0, 32)
+        self.camera = Rect(bg_size[0]-size[0], 0, *size)
+
+    def draw(self):
+        self.screen.blit(self.bg, (0, 0), self.camera)
 
 
 class MainGame:
     def __init__(self):
         pygame.init()
-        self.score = 0
-        self.lifes = 4
         self.screen = pygame.display.set_mode((956, 560), 0, 32)
-        self.current_scene = GameScene()
+        self.current_scene = GameScene((956, 560))
 
     def run(self):
         while True:
