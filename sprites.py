@@ -2,7 +2,18 @@ import pygame
 from pygame import Color
 from pygame import Rect
 from pygame import Surface
+from pygame.sprite import Group
 from pygame.sprite import Sprite
+
+
+class CameraGroup(Group):
+    def __init__(self, camera, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.camera = camera
+
+    def draw(self, surface):
+        for sprite in self.sprites():
+            surface.blit(sprite.image, self.camera.apply(sprite))
 
 
 class Ball(Sprite):
@@ -24,12 +35,12 @@ class Player(Sprite):
         self.yvel = 0
         self.onGround = True
         self.image = Surface((32, 32))
-        self.image.fill(Color("#0000FF"))
+        self.image.fill(Color("#00FFFF"))
         self.image.convert()
         self.rect = Rect(x, y, 32, 32)
 
     def update(self):
-        self.rect = self.rect.move(8, 0)
+        self.rect = self.rect.move(3, 0)
         # if up:
         #     # only jump if on the ground
         #     if self.onGround:
