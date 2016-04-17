@@ -8,8 +8,10 @@ from pygame import HWSURFACE
 
 from camera import Camera
 from camera import complex_camera
+from camera import simple_camera
 
 from sprites import Ball
+from sprites import Player
 
 FLAGS = FULLSCREEN | HWSURFACE | DOUBLEBUF
 
@@ -34,30 +36,27 @@ class GameScene(Scene):
         self.score = 0
         self.lifes = 4
         self.movement = -10
-        self.bg_size = (size[0] * 3, int(1000 / 1080 * size[1]))
+        self.bg_size = (size[0] * 8, int(1000 / 1080 * size[1]))
         self.bg = pygame.transform.scale(
             pygame.image.load('bg.png').convert(),
             self.bg_size)
         self.screen = pygame.display.set_mode(size, FLAGS, 32)
-        self.camera = Rect(self.bg_size[0]-size[0], 0, *size)
+        self.camera = Camera(complex_camera, *size)
         self.release_ball = False
         self.ball_cooldown = 20
+        self.player = Player(32, 100)
 
     def draw(self):
-        self.screen.blit(self.bg, (0, 0), self.camera)
+        self.screen.blit(self.bg, (0, 0), self.camera.state)
         self.sprites.draw(self.screen)
+        self.screen.blit(self.player.image, self.camera.apply(self.player))
 
     def update(self):
-        if self.camera.x <= 0:
-            print('invert')
-            self.movement *= -1
-        elif self.camera.x > self.bg_size[0]-self.camera.width:
-            print('invert')
-            self.movement *= -1
-        self.camera = self.camera.move(self.movement, 0)
-        if self.ball_cooldown:
-            self.ball_cooldown -= 1
-        else:
-            self.ball_cooldown = 20
-            self.sprites.add(Ball())
+        self.camera.update(self.player)
+        # if self.ball_cooldown:
+        #     self.ball_cooldown -= 1
+        # else:
+        #     self.ball_cooldown = 20
+        #     self.sprites.add(Ball())
         self.sprites.update()
+        self.player.update()
