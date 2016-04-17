@@ -2,7 +2,7 @@
 from pygame import Rect
 
 
-def complex_camera(camera, target_rect, half_size):
+def sidescrolling_camera(camera, target_rect, half_size):
     HALF_WIDTH, HALF_HEIGHT = half_size
     l, t, _, _ = target_rect
     _, _, w, h = camera
@@ -16,7 +16,7 @@ def complex_camera(camera, target_rect, half_size):
     return Rect(l, t, w, h)
 
 
-def simple_camera(camera, target_rect, half_size):
+def simple_sidescrolling_camera(camera, target_rect, half_size):
     HALF_WIDTH, HALF_HEIGHT = half_size
     l, t, _, _ = target_rect  # l = left,  t = top
     _, _, w, h = camera       # w = width, h = height

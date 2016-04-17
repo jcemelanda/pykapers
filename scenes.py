@@ -6,8 +6,7 @@ from pygame import DOUBLEBUF
 from pygame import HWSURFACE
 
 from camera import Camera
-from camera import complex_camera
-from camera import simple_camera
+from camera import sidescrolling_camera
 
 from sprites import Ball
 from sprites import CameraGroup
@@ -38,7 +37,7 @@ class GameScene(Scene):
             pygame.image.load('bg.png').convert(),
             self.bg_size)
         self.screen = pygame.display.set_mode(size, FLAGS, 32)
-        self.camera = Camera(complex_camera, *size)
+        self.camera = Camera(sidescrolling_camera, *size)
         self.sprites = CameraGroup(self.camera)
         self.release_ball = False
         self.ball_cooldown = 20
