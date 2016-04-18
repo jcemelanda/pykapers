@@ -6,17 +6,16 @@ from pygame import FULLSCREEN
 from pygame import DOUBLEBUF
 from pygame import HWSURFACE
 
-from camera import Camera
-from camera import complex_camera
+from pygame_camera.camera import Camera
+from pygame_camera.camera import sidescrolling_camera
 
-from sprites import Ball, Platform, Ladder
+from pygame_camera.sprite import CameraGroup
+from sprites import Player, Ball, Platform, Ladder
 
 FLAGS = FULLSCREEN | HWSURFACE | DOUBLEBUF
 
 
 class Scene:
-    def __init__(self):
-        self.sprites = Group()
 
     def draw(self):
         pass
@@ -34,15 +33,18 @@ class GameScene(Scene):
         self.score = 0
         self.lifes = 4
         self.movement = -10
-        self.bg_size = (size[0] * 3, int(1000 / 1080 * size[1]))
+        self.bg_size = (size[0] * 8, int(1000 / 1080 * size[1]))
         self.bg = pygame.transform.scale(
             pygame.image.load('bg.png').convert(),
             self.bg_size)
         self.screen = pygame.display.set_mode(size, FLAGS, 32)
-        self.camera = Rect(self.bg_size[0]-size[0], 0, *size)
+        self.camera = Camera(sidescrolling_camera, *size)
+        self.sprites = CameraGroup(self.camera)
         self.release_ball = False
         self.ball_cooldown = 20
+        self.player = Player(32, 462)
         self.sprites.add(
+            self.player,
             Ladder((30, self.bg_size[1] - 115)),
             Platform((0, self.bg_size[1] - 140)),
             Ladder((650, self.bg_size[1] - 260), side='left'),
@@ -52,20 +54,15 @@ class GameScene(Scene):
             Platform((0, self.bg_size[1])))
 
     def draw(self):
-        self.screen.blit(self.bg, (0, 0), self.camera)
+        self.screen.blit(self.bg, (0, 0), self.camera.state)
         self.sprites.draw(self.screen)
 
     def update(self):
-        if self.camera.x <= 0:
-            print('invert')
-            self.movement *= -1
-        elif self.camera.x > self.bg_size[0]-self.camera.width:
-            print('invert')
-            self.movement *= -1
-        self.camera = self.camera.move(self.movement, 0)
+        self.camera.update(self.player)
         if self.ball_cooldown:
             self.ball_cooldown -= 1
         else:
             self.ball_cooldown = 20
             self.sprites.add(Ball())
         self.sprites.update()
+        self.player.update()
