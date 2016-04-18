@@ -57,10 +57,10 @@ class Player(Sprite):
 
 
 class Ladder(Sprite):
-    def __init__(self, position, side='right'):
+    def __init__(self, position, side='left'):
         super().__init__()
         self.image = pygame.image.load('ladder.png').convert_alpha()
-        if side == 'left':
+        if side == 'right':
             self.image = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()
         self.rect = self.rect.move(position)

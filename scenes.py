@@ -47,7 +47,7 @@ class GameScene(Scene):
             self.player,
             Ladder((30, self.bg_size[1] - 115)),
             Platform((0, self.bg_size[1] - 140)),
-            Ladder((650, self.bg_size[1] - 260), side='left'),
+            Ladder((650, self.bg_size[1] - 260), side='right'),
             Platform((0, self.bg_size[1] - 280)),
             Platform((0, self.bg_size[1] - 420)),
             Ladder((30, self.bg_size[1] - 400)),
