@@ -9,7 +9,7 @@ from pygame import HWSURFACE
 from camera import Camera
 from camera import complex_camera
 
-from sprites import Ball
+from sprites import Ball, Platform, Ladder
 
 FLAGS = FULLSCREEN | HWSURFACE | DOUBLEBUF
 
@@ -42,6 +42,14 @@ class GameScene(Scene):
         self.camera = Rect(self.bg_size[0]-size[0], 0, *size)
         self.release_ball = False
         self.ball_cooldown = 20
+        self.sprites.add(
+            Ladder((30, self.bg_size[1] - 115)),
+            Platform((0, self.bg_size[1] - 140)),
+            Ladder((650, self.bg_size[1] - 260), side='left'),
+            Platform((0, self.bg_size[1] - 280)),
+            Platform((0, self.bg_size[1] - 420)),
+            Ladder((30, self.bg_size[1] - 400)),
+            Platform((0, self.bg_size[1])))
 
     def draw(self):
         self.screen.blit(self.bg, (0, 0), self.camera)

@@ -9,16 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="5760"
+   width="15360"
    height="1000"
-   viewBox="0 0 5760.0001 1000"
+   viewBox="0 0 15360 1000"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   inkscape:export-filename="/home/yori/projects/pykapers/bg.png"
+   inkscape:export-filename="/home/yori/projects/pykapers/platform.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
-   sodipodi:docname="bg.svg">
+   sodipodi:docname="ladder.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="835.73787"
-     inkscape:cy="520"
+     inkscape:zoom="0.45014485"
+     inkscape:cx="380.43356"
+     inkscape:cy="686.03543"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -39,7 +39,22 @@
      inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="1920,320"
+       orientation="1,0"
+       id="guide3358" />
+    <sodipodi:guide
+       position="3840,37.142857"
+       orientation="1,0"
+       id="guide3360" />
+    <sodipodi:guide
+       position="5760,357.14286"
+       orientation="1,0"
+       id="guide4176" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -57,19 +72,24 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-52.362143)">
+    <g
+       transform="matrix(2.6666667,0,0,0.5,0,26.181091)"
+       id="g4152"
+       inkscape:export-filename="/home/yori/projects/pykapers/ladder.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
-       style="opacity:1;fill:#469519;fill-opacity:1;stroke:none;stroke-width:1.77165353;stroke-miterlimit:4;stroke-dasharray:none"
-       id="rect3336"
-       width="5760"
-       height="1000"
-       x="2.8571429"
-       y="52.362144" />
-    <rect
-       style="opacity:1;fill:#00ffff;fill-opacity:1;stroke:none;stroke-width:1.77165353;stroke-miterlimit:4;stroke-dasharray:none"
-       id="rect4164"
-       width="154.28572"
-       height="771.42859"
-       x="2802.8572"
-       y="280.93356" />
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:8.06751823;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4176"
+       width="34.797188"
+       height="244.67953"
+       x="171.53137"
+       y="721.6189"
+       transform="matrix(1,0,0.87607766,0.48217002,0,0)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       transform="translate(10185.429,-242.85714)"
+       id="g4262" />
   </g>
 </svg>
