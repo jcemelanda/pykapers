@@ -5,11 +5,11 @@ from pygame import FULLSCREEN
 from pygame import DOUBLEBUF
 from pygame import HWSURFACE
 
-from camera import Camera
-from camera import sidescrolling_camera
+from pygame_camera.camera import Camera
+from pygame_camera.camera import sidescrolling_camera
 
 from sprites import Ball
-from sprites import CameraGroup
+from pygame_camera.sprite import CameraGroup
 from sprites import Player
 
 FLAGS = FULLSCREEN | HWSURFACE | DOUBLEBUF

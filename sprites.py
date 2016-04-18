@@ -2,18 +2,7 @@ import pygame
 from pygame import Color
 from pygame import Rect
 from pygame import Surface
-from pygame.sprite import Group
 from pygame.sprite import Sprite
-
-
-class CameraGroup(Group):
-    def __init__(self, camera, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.camera = camera
-
-    def draw(self, surface):
-        for sprite in self.sprites():
-            surface.blit(sprite.image, self.camera.apply(sprite))
 
 
 class Ball(Sprite):
